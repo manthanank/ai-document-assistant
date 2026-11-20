@@ -88,7 +88,7 @@ export default function DocumentAssistantLandingPage() {
           </div>
 
           <div className="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
-            <a href="#simulator" className="hover:text-white transition">RAG Simulator</a>
+            <a href="#retrieval-engine" className="hover:text-white transition">Vector Engine</a>
             <a href="#features" className="hover:text-white transition">Features</a>
             <a href="#architecture" className="hover:text-white transition">pgvector Schema</a>
             <a href="#pricing" className="hover:text-white transition">Pricing</a>
@@ -165,14 +165,14 @@ export default function DocumentAssistantLandingPage() {
           </div>
         </section>
 
-        {/* INTERACTIVE VECTOR SIMULATOR */}
-        <section id="simulator" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+        {/* NEURAL VECTOR RETRIEVAL ENGINE */}
+        <section id="retrieval-engine" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold">
               <Search className="w-3.5 h-3.5" />
               <span>Live Semantic Search & Cosine Scoring</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Interactive RAG Similarity Simulator</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Neural Semantic Search & Vector Retrieval Engine</h2>
             <p className="text-slate-400 text-sm sm:text-base">
               Select a natural-language query to see how the vector engine finds the closest chunk and synthesizes a grounded answer.
             </p>

@@ -18,6 +18,23 @@ export default function DocumentVaultPage() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [inspectingDoc, setInspectingDoc] = useState<DocumentItem | null>(null);
 
+  React.useEffect(() => {
+    try {
+      const stored = localStorage.getItem("documind_documents");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) setDocuments(parsed);
+      }
+    } catch (e) {}
+  }, []);
+
+  const saveDocuments = (docs: DocumentItem[]) => {
+    setDocuments(docs);
+    try {
+      localStorage.setItem("documind_documents", JSON.stringify(docs));
+    } catch (e) {}
+  };
+
   const filteredDocs = documents.filter((d) => 
     d.title.toLowerCase().includes(search.toLowerCase()) ||
     d.fileName.toLowerCase().includes(search.toLowerCase())
@@ -27,11 +44,11 @@ export default function DocumentVaultPage() {
   const totalTokens = documents.reduce((sum, d) => sum + (d.tokenCount || 0), 0);
 
   const handleDelete = (id: string) => {
-    setDocuments(documents.filter((d) => d.id !== id));
+    saveDocuments(documents.filter((d) => d.id !== id));
   };
 
   const handleAddDocument = (newDoc: DocumentItem) => {
-    setDocuments([newDoc, ...documents]);
+    saveDocuments([newDoc, ...documents]);
   };
 
   return (
