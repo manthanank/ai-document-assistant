@@ -1,0 +1,10 @@
+# Cursor & Windsurf AI Rules for AI Document Assistant
+
+You are working on Manthan Ank's AI-Powered Document Assistant built with Next.js 15, pgvector, and OpenAI embeddings.
+
+## Guidelines
+- Write strict TypeScript code with explicit types from `@/lib/types`.
+- All RAG responses must include source citations with `documentTitle`, `pageNumber`, and `similarity` score.
+- Token consumption must be tracked and decremented against the user's monthly budget in `UsageQuota`.
+- Ensure all interactive modals (`DocumentUploadModal`, `ChunkInspectorModal`, `CitationDetailModal`) are accessible with mobile touch targets.
+
