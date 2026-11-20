@@ -19,13 +19,28 @@ export default function DocumentVaultPage() {
   const [inspectingDoc, setInspectingDoc] = useState<DocumentItem | null>(null);
 
   React.useEffect(() => {
-    try {
-      const stored = localStorage.getItem("documind_documents");
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) setDocuments(parsed);
-      }
-    } catch (e) {}
+    fetch("/api/documents")
+      .then((res) => res.json())
+      .then((data) => {
+        try {
+          const stored = localStorage.getItem("documind_documents");
+          if (stored) {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed) && parsed.length > 0) setDocuments(parsed);
+          } else if (data.documents && Array.isArray(data.documents)) {
+            setDocuments(data.documents);
+            localStorage.setItem("documind_documents", JSON.stringify(data.documents));
+          }
+        } catch (e) {
+          if (data.documents) setDocuments(data.documents);
+        }
+      })
+      .catch(() => {
+        try {
+          const stored = localStorage.getItem("documind_documents");
+          if (stored) setDocuments(JSON.parse(stored));
+        } catch (e) {}
+      });
   }, []);
 
   const saveDocuments = (docs: DocumentItem[]) => {
