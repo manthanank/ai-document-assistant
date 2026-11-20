@@ -8,6 +8,7 @@ Part of the **10-Project Full-Stack Suite** by [Manthan Ank](https://github.com/
 
 ## 🚀 Key Features & Capabilities
 
+- **Dynamic Vector Vault API (`/api/documents`)**: Server-backed document ingestion, text chunking, and token estimation REST API route with dynamic relative date indexing.
 - **RAG Document Engine**: Semantic question answering grounded strictly in uploaded documents, eliminating hallucinations.
 - **Automated Text Chunking**: Drag-and-drop file upload with recursive semantic boundary chunking and configurable chunk sizes (250, 500, 1000 characters).
 - **Chunk Inspector**: Detailed view into every indexed chunk with page number, chunk index, character length, and raw text.
